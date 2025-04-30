@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nearby Ocean Photography</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="intro-screen">
+<img src="images/logo.webp" alt="Logo">
+<img src="images/avatar.jpg" alt="Avatar">
+<img src="images/background.jpg" alt="Background">
+
+
+<iframe src="profolio/崁仔頂漁市雜誌專刊/崁仔頂魚市專刊.pdf" width="100%" height="600px"></iframe>
+
+
+  </div>
+
+  <nav class="floating-menu">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h1 class="title">Nearby Ocean Photography</h1>
+    </section>
+
+    <section id="portfolio">
+      <div class="category-list">
+        <button data-category="風景">風景</button>
+        <button data-category="人像">人像</button>
+        <button data-category="街拍">街拍</button>
+        <button data-category="音樂活動">音樂活動</button>
+        <button data-category="婚禮">婚禮</button>
+        <button data-category="活動紀錄">活動紀錄</button>
+        <button data-category="商案">商案</button>
+        <button data-category="國家地區特輯">國家地區特輯</button>
+        <button data-category="刊仔頂漁市雜誌專刊">刊仔頂漁市雜誌專刊</button>
+      </div>
+      <div class="gallery"></div>
+    </section>
+
+    <section id="about">
+      <p>這裡將放置簡介與聯絡方式</p>
+    </section>
+
+    <section id="contact">
+      <p>電子郵件與 Instagram 連結</p>
+    </section>
+  </main>
+
+  <div class="image-viewer hidden">
+    <div class="viewer-overlay"></div>
+    <div class="viewer-content">
+      <div class="hint top-hint"></div>
+      <img class="viewer-image" src="" alt="Preview" />
+      <div class="hint bottom-hint"></div>
+    </div>
+  </div>
+
+  <script src="photoData.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

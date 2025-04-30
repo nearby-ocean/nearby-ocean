@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.intro-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.intro-screen .background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+  opacity: 0;
+  animation: fadeInMove 2s forwards;
+}
+
+.avatar {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: fadeInMove 2s 0.5s forwards;
+}
+
+.floating-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 12px;
+  z-index: 1000;
+}
+
+.floating-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.floating-menu li {
+  margin: 10px 0;
+}
+
+.floating-menu a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.floating-menu a:hover {
+  opacity: 1;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.category-list button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery img {
+  max-width: 90%;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.image-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.85);
+  z-index: 2000;
+}
+
+.image-viewer.hidden {
+  display: none;
+}
+
+.viewer-content {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.viewer-image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.hint {
+  position: absolute;
+  left: 50%;
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-50%);
+}
+
+.top-hint {
+  top: -20px;
+}
+
+.bottom-hint {
+  bottom: -20px;
+}
+
+@keyframes fadeInMove {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
