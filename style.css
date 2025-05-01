@@ -12,25 +12,32 @@ body {
   overflow: hidden;
 }
 
-.intro-screen .background {
+.background-container .background {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  z-index: 0;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 150px;
+  width: 160px;
+  margin-bottom: 20px;
   opacity: 0;
   animation: fadeInMove 2s forwards;
 }
 
 .avatar {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
   width: 120px;
   border-radius: 50%;
   opacity: 0;
@@ -60,30 +67,37 @@ body {
 .floating-menu a {
   color: white;
   text-decoration: none;
-  opacity: 0.7;
+  opacity: 0.6;
+  transition: opacity 0.3s;
 }
 
 .floating-menu a:hover {
   opacity: 1;
 }
 
-.category-list {
+.portfolio-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 0;
 }
 
-.category-list button {
+.category-list.vertical {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.category-list.vertical button {
   background: none;
   border: 1px solid white;
   color: white;
-  padding: 8px 16px;
-  margin: 5px;
+  padding: 8px;
+  margin: 5px 0;
   cursor: pointer;
 }
 
 .gallery {
+  flex-grow: 1;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +105,9 @@ body {
 
 .gallery img {
   max-width: 90%;
-  margin: 10px 0;
+  max-height: 85vh;
+  margin: 20px 0;
+  object-fit: contain;
   cursor: pointer;
 }
 
@@ -101,11 +117,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 2000;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.85);
-  z-index: 2000;
 }
 
 .image-viewer.hidden {
@@ -115,34 +131,50 @@ body {
 .viewer-content {
   position: relative;
   width: 90%;
-  max-width: 1200px;
+  max-width: 1000px;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .viewer-image {
-  width: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 80vh;
   object-fit: contain;
 }
 
 .hint {
   position: absolute;
   left: 50%;
-  width: 40px;
+  width: 60px;
   height: 4px;
   background: rgba(255, 255, 255, 0.3);
   transform: translateX(-50%);
 }
 
 .top-hint {
-  top: -20px;
+  top: -24px;
 }
 
 .bottom-hint {
-  bottom: -20px;
+  bottom: -24px;
 }
 
 @keyframes fadeInMove {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .gallery img {
+    max-height: 70vh;
+  }
+  .viewer-image {
+    max-height: 65vh;
   }
 }
