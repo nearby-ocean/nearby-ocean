@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nearby Ocean Photography</title>
+  <title>nearby_ocean Photography</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="intro-screen">
-    <div class="background-container">
-      <img src="images/background.jpg" alt="Background" class="background">
-    </div>
-    <div class="overlay">
-      <img src="images/logo.webp" alt="Logo" class="logo">
-      <img src="images/avatar.jpg" alt="Avatar" class="avatar">
-    </div>
-  </div>
+  <div id="background"></div>
+
+  <header>
+    <img src="assets/logo.png" alt="logo" class="logo" />
+    <img src="assets/profile.jpg" alt="headshot" class="headshot" />
+    <h1 class="site-title">nearby_ocean</h1>
+  </header>
 
   <nav class="floating-menu">
     <ul>
@@ -28,52 +26,64 @@
 
   <main>
     <section id="home">
-      <h1 class="title">Nearby Ocean Photography</h1>
+      <!-- Home section only shows branding and background -->
     </section>
 
     <section id="portfolio">
-      <div class="portfolio-container">
-        <div class="category-list vertical">
-          <button data-category="風景">風景</button>
-          <button data-category="人像">人像</button>
-          <button data-category="街拍">街拍</button>
-          <button data-category="音樂活動">音樂活動</button>
-          <button data-category="婚禮">婚禮</button>
-          <button data-category="活動紀錄">活動紀錄</button>
-          <button data-category="商案">商案</button>
-          <button data-category="國家地區特輯">國家地區特輯</button>
-          <button data-category="刊仔頂漁市雜誌專刊">刊仔頂漁市雜誌專刊</button>
+      <h2>Portfolio</h2>
+      <aside class="sidebar">
+        <ul>
+          <li><a href="#landscape">風景</a></li>
+          <li><a href="#portraits">人像</a>
+            <ul class="sub">
+              <li><a href="#sunshine">sunshine</a></li>
+              <li><a href="#shadowless">shadowless</a></li>
+              <li><a href="#multi">multi</a></li>
+              <li><a href="#dark">dark</a></li>
+            </ul>
+          </li>
+          <li><a href="#street">街拍</a></li>
+          <li><a href="#music">音樂活動</a></li>
+          <li><a href="#wedding">婚禮婚紗</a></li>
+          <li><a href="#event">活動紀錄</a></li>
+          <li><a href="#commercial">商案</a></li>
+          <li><a href="#feature">國家地區特輯</a></li>
+          <li><a href="#magazine">崁仔頂漁市雜誌專刊</a></li>
+        </ul>
+      </aside>
+
+      <div class="gallery-container">
+        <div id="landscape" class="photo-gallery"></div>
+        <div id="sunshine" class="photo-gallery"></div>
+        <div id="shadowless" class="photo-gallery"></div>
+        <div id="multi" class="photo-gallery"></div>
+        <div id="dark" class="photo-gallery"></div>
+        <div id="street" class="photo-gallery"></div>
+        <div id="music" class="photo-gallery"></div>
+        <div id="wedding" class="photo-gallery"></div>
+        <div id="event" class="photo-gallery"></div>
+        <div id="commercial" class="photo-gallery"></div>
+        <div id="feature" class="photo-gallery"></div>
+        <div id="magazine" class="pdf-viewer">
+          <iframe src="assets/magazine.pdf" frameborder="0"></iframe>
         </div>
-        <div class="gallery"></div>
       </div>
     </section>
 
-    <section id="magazine" class="hidden">
-      <iframe src="profolio/崁仔頂漁市雜誌專刊/崁仔頂魚市專刊.pdf" width="100%" height="600px"></iframe>
-    </section>
-
     <section id="about">
-      <h2>關於我</h2>
-      <p>我是一位專注於人像、風景與街拍的攝影師，攝影是我表達情感與觀察世界的方式。</p>
+      <h2>About Me</h2>
+      <p>我是 nearby_ocean，一位專注於風景、人像與街拍的攝影師。<br>這個網站展示了我在不同主題與地區拍攝的作品。</p>
     </section>
 
     <section id="contact">
-      <h2>聯絡方式</h2>
-      <p>Email: nearbyocean@example.com</p>
+      <h2>Contact</h2>
+      <p>Email: zx55512300@gmail.com</p>
       <p>Instagram: <a href="https://instagram.com/nearby_ocean" target="_blank">@nearby_ocean</a></p>
     </section>
   </main>
 
-  <div class="image-viewer hidden">
-    <div class="viewer-overlay"></div>
-    <div class="viewer-content">
-      <div class="hint top-hint"></div>
-      <img class="viewer-image" src="" alt="Preview" />
-      <div class="hint bottom-hint"></div>
-    </div>
-  </div>
+  <button id="back-to-top">↑</button>
 
-  <script src="photoData.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
