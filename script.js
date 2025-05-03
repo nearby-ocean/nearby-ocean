@@ -1,31 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const backToTop = document.getElementById("back-to-top");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      backToTop.style.display = "block";
-    } else {
-      backToTop.style.display = "none";
+  const sections = ["landscape", "sunshine", "shadowless", "multi", "dark", "street", "music", "wedding", "event", "commercial", "feature"];
+  sections.forEach(id => {
+    const container = document.getElementById(id);
+    const photos = photoData[id];
+    if (container && photos) {
+      photos.forEach((src, index) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `${id} photo ${index + 1}`;
+        img.addEventListener("click", () => {
+          const nextIndex = (index + 1) % photos.length;
+          img.src = photos[nextIndex];
+        });
+        container.appendChild(img);
+      });
     }
+  });
+
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 500 ? "block" : "none";
   });
 
   backToTop.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // Dummy image loading (you should load real image URLs)
-  const sections = ["landscape", "sunshine", "shadowless", "multi", "dark", "street", "music", "wedding", "event", "commercial", "feature"];
-  sections.forEach(id => {
-    const container = document.getElementById(id);
-    for (let i = 1; i <= 6; i++) {
-      const img = document.createElement("img");
-      img.src = `assets/${id}${i}.jpg`; // replace with real paths
-      img.alt = `${id} ${i}`;
-      img.addEventListener("click", () => {
-        const next = img.nextElementSibling || container.firstElementChild;
-        next.scrollIntoView({ behavior: "smooth" });
-      });
-      container.appendChild(img);
-    }
   });
 });
