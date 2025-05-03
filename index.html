@@ -4,69 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>nearby_ocean Photography</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <!-- 背景圖片 -->
   <div id="background"></div>
 
-  <header>
-    <img src="assets/logo.png" alt="logo" class="logo" />
-    <img src="assets/avatar.jpg" alt="avatar" class="avatar" />
-    <h1 class="site-title">nearby_ocean</h1>
+  <!-- 頭貼與 Logo -->
+  <header id="top-logo">
+    <img src="images/logo.png" alt="Logo" class="logo"/>
+    <img src="images/avatar.jpg" alt="Headshot" class="headshot"/>
   </header>
 
-  <nav class="floating-menu">
+  <!-- 側邊選單 -->
+  <nav class="floating-sidebar">
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#landscape">風景</a></li>
+      <li>
+        <a href="#portrait">人像</a>
+        <ul class="sub-menu">
+          <li><a href="#sunshine">sunshine</a></li>
+          <li><a href="#shadowless">shadowless</a></li>
+          <li><a href="#multi">multi</a></li>
+          <li><a href="#dark">dark</a></li>
+        </ul>
+      </li>
+      <li><a href="#street">街拍</a></li>
+      <li><a href="#music">音樂活動</a></li>
+      <li><a href="#wedding">婚禮婚紗</a></li>
+      <li><a href="#event">活動紀錄</a></li>
+      <li><a href="#commercial">商案</a></li>
+      <li><a href="#feature">國家地區特輯</a></li>
+      <li><a href="#magazine">崁仔頂漁市雜誌專刊</a></li>
     </ul>
   </nav>
 
+  <!-- 圖片展示區 -->
   <main>
-    <section id="home"></section>
-
-    <section id="portfolio">
-      <h2>Portfolio</h2>
-      <aside class="sidebar">
-        <ul>
-          <li><a href="#landscape">風景</a></li>
-          <li>
-            <a href="#portraits">人像</a>
-            <ul class="sub">
-              <li><a href="#sunshine">sunshine</a></li>
-              <li><a href="#shadowless">shadowless</a></li>
-              <li><a href="#multi">multi</a></li>
-              <li><a href="#dark">dark</a></li>
-            </ul>
-          </li>
-          <li><a href="#street">街拍</a></li>
-          <li><a href="#music">音樂活動</a></li>
-          <li><a href="#wedding">婚禮婚紗</a></li>
-          <li><a href="#event">活動紀錄</a></li>
-          <li><a href="#commercial">商案</a></li>
-          <li><a href="#feature">國家地區特輯</a></li>
-          <li><a href="#magazine">崁仔頂漁市雜誌專刊</a></li>
-        </ul>
-      </aside>
-
-      <div class="gallery-container">
-        <div id="landscape" class="photo-gallery"></div>
-        <div id="sunshine" class="photo-gallery"></div>
-        <div id="shadowless" class="photo-gallery"></div>
-        <div id="multi" class="photo-gallery"></div>
-        <div id="dark" class="photo-gallery"></div>
-        <div id="street" class="photo-gallery"></div>
-        <div id="music" class="photo-gallery"></div>
-        <div id="wedding" class="photo-gallery"></div>
-        <div id="event" class="photo-gallery"></div>
-        <div id="commercial" class="photo-gallery"></div>
-        <div id="feature" class="photo-gallery"></div>
-        <div id="magazine" class="pdf-viewer">
-          <iframe src="assets/magazine.pdf" frameborder="0"></iframe>
-        </div>
-      </div>
+    <section id="landscape"></section>
+    <section id="sunshine"></section>
+    <section id="shadowless"></section>
+    <section id="multi"></section>
+    <section id="dark"></section>
+    <section id="street"></section>
+    <section id="music"></section>
+    <section id="wedding"></section>
+    <section id="event"></section>
+    <section id="commercial"></section>
+    <section id="feature"></section>
+    <section id="magazine">
+      <iframe src="assets/magazine.pdf" frameborder="0" width="100%" height="800px"></iframe>
     </section>
 
     <section id="about">
