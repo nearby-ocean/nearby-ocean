@@ -1,76 +1,67 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>nearby_ocean Photography</title>
   <link rel="stylesheet" href="style.css"/>
+  <script defer src="photoData.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- 背景圖片 -->
+  <!-- 背景容器 -->
   <div id="background"></div>
 
-  <!-- 頭貼與 Logo -->
-  <header id="top-logo">
-    <img src="images/logo.png" alt="Logo" class="logo"/>
-    <img src="images/avatar.jpg" alt="Headshot" class="headshot"/>
-  </header>
+  <!-- Logo 與首頁浮出動畫 -->
+  <div id="logo-container">
+    <img src="images/logo.webp" alt="nearby_ocean logo" id="logo"/>
+    <h1>nearby_ocean</h1>
+  </div>
 
-  <!-- 側邊選單 -->
-  <nav class="floating-sidebar">
+  <!-- 側邊導覽欄 -->
+  <nav id="sidebar">
     <ul>
-      <li><a href="#landscape">風景</a></li>
-      <li>
-        <a href="#portrait">人像</a>
-        <ul class="sub-menu">
-          <li><a href="#sunshine">sunshine</a></li>
-          <li><a href="#shadowless">shadowless</a></li>
-          <li><a href="#multi">multi</a></li>
-          <li><a href="#dark">dark</a></li>
+      <li><a href="#home">首頁</a></li>
+      <li class="has-submenu">
+        <a href="#portfolio">Portfolio ▾</a>
+        <ul class="submenu">
+          <li><a href="#landscape">風景</a></li>
+          <li><a href="#portraits">人像</a></li>
+          <li><a href="#street">街拍</a></li>
+          <li><a href="#music">音樂活動</a></li>
+          <li><a href="#wedding">婚禮婚紗</a></li>
+          <li><a href="#events">活動紀錄</a></li>
+          <li><a href="#commercial">商案</a></li>
+          <li><a href="#regions">國家地區特輯</a></li>
+          <li><a href="#magazine">崁仔頂漁市雜誌專刊</a></li>
         </ul>
       </li>
-      <li><a href="#street">街拍</a></li>
-      <li><a href="#music">音樂活動</a></li>
-      <li><a href="#wedding">婚禮婚紗</a></li>
-      <li><a href="#event">活動紀錄</a></li>
-      <li><a href="#commercial">商案</a></li>
-      <li><a href="#feature">國家地區特輯</a></li>
-      <li><a href="#magazine">崁仔頂漁市雜誌專刊</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- 圖片展示區 -->
-  <main>
-    <section id="landscape"></section>
-    <section id="sunshine"></section>
-    <section id="shadowless"></section>
-    <section id="multi"></section>
-    <section id="dark"></section>
-    <section id="street"></section>
-    <section id="music"></section>
-    <section id="wedding"></section>
-    <section id="event"></section>
-    <section id="commercial"></section>
-    <section id="feature"></section>
-    <section id="magazine">
-      <iframe src="assets/magazine.pdf" frameborder="0" width="100%" height="800px"></iframe>
-    </section>
+  <!-- 回到頂部按鈕 -->
+  <button id="back-to-top">↑ Top</button>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>我是 nearby_ocean，一位專注於風景、人像與街拍的攝影師。</p>
-    </section>
+  <!-- 各類照片區段 -->
+  <section id="home"></section>
+  <section id="landscape"></section>
+  <section id="portraits"></section>
+  <section id="street"></section>
+  <section id="music"></section>
+  <section id="wedding"></section>
+  <section id="events"></section>
+  <section id="commercial"></section>
+  <section id="regions"></section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: zx55512300@gmail.com</p>
-      <p>Instagram: <a href="https://instagram.com/nearby_ocean" target="_blank">@nearby_ocean</a></p>
-    </section>
-  </main>
+  <!-- 雜誌 PDF 檢視 -->
+  <section id="magazine">
+    <iframe src="profolio/崁仔頂漁市雜誌專刊.pdf" width="100%" height="800px" style="border:none;"></iframe>
+  </section>
 
-  <button id="back-to-top">↑</button>
-
-  <script src="photoData.js"></script>
-  <script src="script.js"></script>
+  <!-- 關於我 & 聯絡 -->
+  <section id="about"><h2>About Me</h2><p>（填寫介紹）</p></section>
+  <section id="contact"><h2>Contact</h2><p>Email: yourname@example.com<br/>Instagram: @nearby_ocean</p></section>
 </body>
 </html>

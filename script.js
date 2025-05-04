@@ -1,6 +1,5 @@
 // script.js
 
-// 讀取圖片資料並渲染
 window.addEventListener("DOMContentLoaded", () => {
   if (typeof photoData === 'undefined') {
     console.error("photoData 未定義");
@@ -30,25 +29,28 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// 背景填滿
 window.addEventListener("load", () => {
   const bg = document.getElementById("background");
-  bg.style.backgroundImage = "url('images/background.jpg')";
-  bg.style.backgroundSize = "cover";
-  bg.style.backgroundPosition = "center";
-  bg.style.position = "fixed";
-  bg.style.top = 0;
-  bg.style.left = 0;
-  bg.style.width = "100%";
-  bg.style.height = "100%";
-  bg.style.zIndex = "-1";
+  if (bg) {
+    bg.style.backgroundImage = "url('images/background.jpg')";
+    bg.style.backgroundSize = "cover";
+    bg.style.backgroundPosition = "center";
+    bg.style.position = "fixed";
+    bg.style.top = 0;
+    bg.style.left = 0;
+    bg.style.width = "100%";
+    bg.style.height = "100%";
+    bg.style.zIndex = "-1";
+  }
+
+  const backToTop = document.getElementById("back-to-top");
+  if (backToTop) {
+    backToTop.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+  }
 });
 
-// Back to Top button
-const backToTop = document.getElementById("back-to-top");
-backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-// 建立全螢幕瀏覽功能
 let currentImageIndex = 0;
 let currentCategory = "";
 
@@ -85,7 +87,7 @@ function showNextImage() {
   document.getElementById("fullscreen-image").src = images[currentImageIndex];
 }
 
-// 手機觸控滑動支援
+// 手機滑動支援
 let touchStartX = 0;
 let touchEndX = 0;
 
