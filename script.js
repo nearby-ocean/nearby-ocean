@@ -6,29 +6,64 @@ window.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  photoData.forEach(({ id, images }) => {
-    const section = document.getElementById(id);
-    if (!section) return;
+  for (const [category, data] of Object.entries(photoData)) {
+    // 檢查是否為「人像」子類
+    if (typeof data === "object" && !Array.isArray(data)) {
+      for (const [subCategory, images] of Object.entries(data)) {
+        const section = document.getElementById(subCategory);
+        if (!section) continue;
 
-    const container = document.createElement("div");
-    container.className = "image-gallery";
+        const container = document.createElement("div");
+        container.className = "image-gallery";
 
-    images.forEach((src, index) => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = `${id}-${index}`;
-      img.className = "gallery-image";
-      img.dataset.index = index;
-      img.dataset.category = id;
+        images.forEach((src, index) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = `${subCategory}-${index}`;
+          img.className = "gallery-image";
+          img.dataset.index = index;
+          img.dataset.category = subCategory;
 
-      img.addEventListener("click", () => openFullscreenModal(id, index));
-      container.appendChild(img);
-    });
+          img.addEventListener("click", () => openFullscreenModal(subCategory, index));
+          container.appendChild(img);
+        });
 
-    section.appendChild(container);
-  });
+        section.appendChild(container);
+      }
+    } else {
+      // 非人像類別直接處理
+      const section = document.getElementById(category);
+      if (!section) continue;
+
+      const container = document.createElement("div");
+      container.className = "image-gallery";
+
+      data.forEach((src, index) => {
+        if (src.endsWith(".pdf")) {
+          const iframe = document.createElement("iframe");
+          iframe.src = src;
+          iframe.width = "100%";
+          iframe.height = "600px";
+          container.appendChild(iframe);
+        } else {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = `${category}-${index}`;
+          img.className = "gallery-image";
+          img.dataset.index = index;
+          img.dataset.category = category;
+
+          img.addEventListener("click", () => openFullscreenModal(category, index));
+          container.appendChild(img);
+        }
+      });
+
+      section.appendChild(container);
+    }
+  }
 });
 
+// 背景圖片設定
 window.addEventListener("load", () => {
   const bg = document.getElementById("background");
   if (bg) {
@@ -41,6 +76,7 @@ window.addEventListener("load", () => {
     bg.style.width = "100%";
     bg.style.height = "100%";
     bg.style.zIndex = "-1";
+    bg.style.opacity = "0.6";
   }
 
   const backToTop = document.getElementById("back-to-top");
@@ -51,6 +87,7 @@ window.addEventListener("load", () => {
   }
 });
 
+// 圖片點擊展示功能
 let currentImageIndex = 0;
 let currentCategory = "";
 
@@ -62,7 +99,7 @@ function openFullscreenModal(category, index) {
   modal.id = "fullscreen-modal";
   modal.innerHTML = `
     <div class="modal-content">
-      <img id="fullscreen-image" src="${photoData.find(d => d.id === category).images[index]}" />
+      <img id="fullscreen-image" src="${getImageSrc(category, index)}" />
       <button id="prev-button">◀</button>
       <button id="next-button">▶</button>
       <button id="close-button">✖</button>
@@ -75,14 +112,30 @@ function openFullscreenModal(category, index) {
   document.getElementById("close-button").addEventListener("click", () => modal.remove());
 }
 
+function getImageArray(category) {
+  for (const [mainCategory, data] of Object.entries(photoData)) {
+    if (typeof data === "object" && !Array.isArray(data)) {
+      if (data[category]) return data[category];
+    } else if (mainCategory === category) {
+      return data;
+    }
+  }
+  return [];
+}
+
+function getImageSrc(category, index) {
+  const images = getImageArray(category);
+  return images[index];
+}
+
 function showPrevImage() {
-  const images = photoData.find(d => d.id === currentCategory).images;
+  const images = getImageArray(currentCategory);
   currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
   document.getElementById("fullscreen-image").src = images[currentImageIndex];
 }
 
 function showNextImage() {
-  const images = photoData.find(d => d.id === currentCategory).images;
+  const images = getImageArray(currentCategory);
   currentImageIndex = (currentImageIndex + 1) % images.length;
   document.getElementById("fullscreen-image").src = images[currentImageIndex];
 }
