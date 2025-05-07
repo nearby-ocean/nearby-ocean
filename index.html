@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>nearby_ocean Photography</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
   <script defer src="photoData.js"></script>
   <script defer src="script.js"></script>
 </head>
@@ -12,13 +12,13 @@
   <!-- 背景容器 -->
   <div id="background"></div>
 
-  <!-- Logo 與首頁浮出動畫 -->
+  <!-- LOGO 與名稱 -->
   <div id="logo-container">
-    <img src="images/logo.webp" alt="nearby_ocean logo" id="logo"/>
+    <img src="images/logo.webp" alt="nearby_ocean logo" id="logo" />
     <h1>nearby_ocean</h1>
   </div>
 
-  <!-- 側邊導覽欄 -->
+  <!-- 側邊選單 -->
   <nav id="sidebar">
     <ul>
       <li><a href="#home">首頁</a></li>
@@ -26,7 +26,15 @@
         <a href="#portfolio">Portfolio ▾</a>
         <ul class="submenu">
           <li><a href="#landscape">風景</a></li>
-          <li><a href="#portraits">人像</a></li>
+          <li class="has-submenu">
+            <a href="#portraits">人像 ▸</a>
+            <ul class="submenu">
+              <li><a href="#sunshine">sunshine</a></li>
+              <li><a href="#shadowless">shadowless</a></li>
+              <li><a href="#multi">multi</a></li>
+              <li><a href="#dark">dark</a></li>
+            </ul>
+          </li>
           <li><a href="#street">街拍</a></li>
           <li><a href="#music">音樂活動</a></li>
           <li><a href="#wedding">婚禮婚紗</a></li>
@@ -42,12 +50,15 @@
   </nav>
 
   <!-- 回到頂部按鈕 -->
-  <button id="back-to-top">↑ Top</button>
+  <button id="back-to-top">↑</button>
 
-  <!-- 各類照片區段 -->
+  <!-- 各作品分類區塊 -->
   <section id="home"></section>
   <section id="landscape"></section>
-  <section id="portraits"></section>
+  <section id="sunshine"></section>
+  <section id="shadowless"></section>
+  <section id="multi"></section>
+  <section id="dark"></section>
   <section id="street"></section>
   <section id="music"></section>
   <section id="wedding"></section>
@@ -55,13 +66,33 @@
   <section id="commercial"></section>
   <section id="regions"></section>
 
-  <!-- 雜誌 PDF 檢視 -->
+  <!-- PDF 專區 -->
   <section id="magazine">
     <iframe src="profolio/崁仔頂漁市雜誌專刊.pdf" width="100%" height="800px" style="border:none;"></iframe>
   </section>
 
-  <!-- 關於我 & 聯絡 -->
-  <section id="about"><h2>About Me</h2><p>（填寫介紹）</p></section>
-  <section id="contact"><h2>Contact</h2><p>Email: yourname@example.com<br/>Instagram: @nearby_ocean</p></section>
+  <!-- About Me 區塊 -->
+  <section id="about" class="about-section">
+    <div class="about-overlay"></div>
+    <div class="about-container">
+      <div class="about-left">
+        <img src="images/logo.webp" alt="Logo" class="about-logo" />
+      </div>
+      <div class="about-right">
+        <img src="images/avatar.jpg" alt="Headshot" class="about-avatar" />
+      </div>
+    </div>
+    <p class="about-description">
+      尋找，等待，拍攝，透過攝影，傳達我所詮釋的世界。<br />
+      有些事現在不做，一輩子都不會做了。
+    </p>
+  </section>
+
+  <!-- 聯絡資訊 -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: zx55512300@gmail.com</p>
+    <p>Instagram: <a href="https://www.instagram.com/nearby_ocean" target="_blank">@nearby_ocean</a></p>
+  </section>
 </body>
 </html>
