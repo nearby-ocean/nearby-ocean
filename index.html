@@ -34,12 +34,17 @@
           <li><a href="#婚禮">婚禮婚紗</a></li>
           <li><a href="#活動紀錄">活動紀錄</a></li>
           <li><a href="#商案">商案</a></li>
-          <li><a href="#國家地區特輯">國家地區特輯</a></li>
+          <li class="has-submenu">
+            <a href="#國家地區特輯">國家地區特輯 ▸</a>
+            <ul class="submenu">
+              <li><a href="#日本">日本</a></li>
+              <li><a href="#史瓦帝尼">史瓦帝尼</a></li>
+            </ul>
+          </li>
           <li><a href="#magazine">崁仔頂漁市雜誌專刊</a></li>
         </ul>
       </li>
       <li><a href="#about">About Me</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -51,7 +56,7 @@
     <div class="home-bg"></div>
     <div class="home-content">
       <div class="home-logo-block">
-        <img src="images/logo.webp" alt="nearby_ocean logo" class="home-logo" />
+        <img src="images/logo.png" alt="nearby_ocean logo" class="home-logo" />
         <h1 class="home-title">NEARBY_OCEAN</h1>
         <div class="home-subtitle">PHOTOGRAPHY</div>
       </div>
@@ -75,7 +80,10 @@
       <div id="婚禮" class="portfolio-category"></div>
       <div id="活動紀錄" class="portfolio-category"></div>
       <div id="商案" class="portfolio-category"></div>
-      <div id="國家地區特輯" class="portfolio-category"></div>
+      <div id="國家地區特輯" class="portfolio-category">
+        <div id="日本" class="portfolio-country"></div>
+        <div id="史瓦帝尼" class="portfolio-country"></div>
+      </div>
       <div id="magazine" class="portfolio-category">
         <iframe src="profolio/崁仔頂漁市雜誌專刊/崁仔頂魚市專刊.pdf" width="100%" height="800px" style="border:none;"></iframe>
       </div>
@@ -84,21 +92,25 @@
 
   <!-- About Me 區塊 -->
   <section id="about" class="main-section">
-    <div class="about-container">
-      <img src="images/logo.webp" alt="Logo" class="about-logo" />
+    <div class="about-container about-row">
+      <img src="images/logo.png" alt="Logo" class="about-logo" />
       <img src="images/avatar.jpg" alt="Headshot" class="about-avatar" />
-      <div class="about-description">
-        尋找，等待，拍攝，透過攝影，傳達我所詮釋的世界。<br />
-        有些事現在不做，一輩子都不會做了。
-      </div>
+    </div>
+    <div class="about-description">
+      尋找，等待，拍攝，透過攝影，傳達我所詮釋的世界。<br />
+      有些事現在不做，一輩子都不會做了。
     </div>
   </section>
 
-  <!-- 聯絡資訊 -->
-  <section id="contact" class="main-section">
-    <h2>Contact</h2>
-    <p>Email: zx55512300@gmail.com</p>
-    <p>Instagram: <a href="https://www.instagram.com/nearby_ocean" target="_blank">@nearby_ocean</a></p>
-  </section>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-contact">
+      <span>Email: zx55512300@gmail.com</span>
+      <span>Instagram: <a href="https://www.instagram.com/nearby_ocean" target="_blank">@nearby_ocean</a></span>
+    </div>
+    <div class="footer-copyright">
+      &copy; 2025 nearby_ocean. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>

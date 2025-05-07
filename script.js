@@ -108,7 +108,9 @@ window.addEventListener('DOMContentLoaded', () => {
         const target = href.replace('#', '');
         if (target === 'portfolio' ||
             target === '風景' || target === '人像' || target === '街拍' || target === '音樂活動' ||
-            target === '婚禮' || target === '活動紀錄' || target === '商案' || target === '國家地區特輯' || target === 'magazine') {
+            target === '婚禮' || target === '活動紀錄' || target === '商案' || target === '國家地區特輯' || target === 'magazine' ||
+            target === '日本' || target === '史瓦帝尼' ||
+            target === 'sunshine' || target === 'shadowless' || target === 'multi' || target === 'dark') {
           showSection('portfolio');
           showPortfolioCategory(target);
         } else {
@@ -126,7 +128,6 @@ window.addEventListener('DOMContentLoaded', () => {
 function showPortfolioCategory(category) {
   document.querySelectorAll('.portfolio-category').forEach(cat => cat.style.display = 'none');
   if (category === '人像') {
-    // 預設顯示人像的第一個子分類
     showPortfolioCategory('sunshine');
     return;
   }
@@ -134,12 +135,21 @@ function showPortfolioCategory(category) {
   if (cat) cat.style.display = 'block';
   // 人像子分類
   if (['sunshine','shadowless','multi','dark'].includes(category)) {
-    document.getElementById('人像').style.display = 'block';
+    document.getElementById('人像').style.display = 'flex';
     document.querySelectorAll('#人像 > .portfolio-category').forEach(sub => sub.style.display = 'none');
     const subcat = document.getElementById(category);
     if (subcat) subcat.style.display = 'block';
   } else if (document.getElementById('人像')) {
     document.getElementById('人像').style.display = 'none';
+  }
+  // 國家地區特輯子分類
+  if (category === '國家地區特輯') {
+    document.querySelectorAll('.portfolio-country').forEach(c => c.style.display = 'block');
+  } else if (['日本','史瓦帝尼'].includes(category)) {
+    document.getElementById('國家地區特輯').style.display = 'block';
+    document.querySelectorAll('.portfolio-country').forEach(c => c.style.display = 'none');
+    const subcat = document.getElementById(category);
+    if (subcat) subcat.style.display = 'block';
   }
 }
 
@@ -150,23 +160,26 @@ let currentCategory = "";
 function openFullscreenModal(category, index) {
   currentCategory = category;
   currentImageIndex = index;
-
+  const images = getImageArray(category);
   const modal = document.createElement("div");
   modal.id = "fullscreen-modal";
   modal.innerHTML = `
-    <div class="modal-content">
-      <img id="fullscreen-image" src="${getImageSrc(category, index)}" />
-      <div class="modal-index-tip">第 ${index+1} 張／共 ${getImageArray(category).length} 張</div>
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <img id="fullscreen-image" src="${images[index]}" />
+      <div class="modal-index-tip">第 ${index+1} 張／共 ${images.length} 張</div>
       <button id="prev-button">◀</button>
       <button id="next-button">▶</button>
       <button id="close-button">✖</button>
     </div>
   `;
+  // 點擊遮罩關閉
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.remove();
+  });
   document.body.appendChild(modal);
-
-  document.getElementById("prev-button").addEventListener("click", showPrevImage);
-  document.getElementById("next-button").addEventListener("click", showNextImage);
-  document.getElementById("close-button").addEventListener("click", () => modal.remove());
+  document.getElementById("prev-button").addEventListener("click", e => { e.stopPropagation(); showPrevImage(); });
+  document.getElementById("next-button").addEventListener("click", e => { e.stopPropagation(); showNextImage(); });
+  document.getElementById("close-button").addEventListener("click", e => { e.stopPropagation(); modal.remove(); });
 }
 
 function getImageArray(category) {
@@ -180,21 +193,24 @@ function getImageArray(category) {
   return [];
 }
 
-function getImageSrc(category, index) {
-  const images = getImageArray(category);
-  return images[index];
+function updateModalImage() {
+  const images = getImageArray(currentCategory);
+  const modalImg = document.getElementById("fullscreen-image");
+  if (modalImg) modalImg.src = images[currentImageIndex];
+  const tip = document.querySelector('.modal-index-tip');
+  if (tip) tip.textContent = `第 ${currentImageIndex+1} 張／共 ${images.length} 張`;
 }
 
 function showPrevImage() {
   const images = getImageArray(currentCategory);
   currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  document.getElementById("fullscreen-image").src = images[currentImageIndex];
+  updateModalImage();
 }
 
 function showNextImage() {
   const images = getImageArray(currentCategory);
   currentImageIndex = (currentImageIndex + 1) % images.length;
-  document.getElementById("fullscreen-image").src = images[currentImageIndex];
+  updateModalImage();
 }
 
 // 手機滑動支援
