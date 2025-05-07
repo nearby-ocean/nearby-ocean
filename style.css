@@ -156,3 +156,154 @@ body, html {
   display: block;
   margin: 0 auto;
 }
+
+/* 區塊顯示控制 */
+.main-section { display: none; }
+.main-section.active { display: block; animation: fadeIn 0.6s; }
+
+/* 首頁設計 */
+.home-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: url('images/background.jpg') center/cover no-repeat;
+  z-index: -1;
+  opacity: 0.7;
+}
+.home-content {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-logo-block {
+  text-align: center;
+  z-index: 2;
+}
+.home-logo {
+  width: 180px;
+  margin-bottom: 20px;
+}
+.home-title {
+  font-size: 2.5rem;
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0;
+}
+.home-subtitle {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  letter-spacing: 3px;
+}
+.home-avatar {
+  position: absolute;
+  right: 12vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  border: 8px solid #222;
+  z-index: 2;
+}
+
+/* 作品集頭像 */
+.portfolio-avatar {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 200;
+}
+
+/* 作品集分類 */
+#portfolio-categories {
+  margin-top: 120px;
+  padding: 0 2vw;
+}
+.portfolio-category {
+  margin-bottom: 40px;
+}
+
+/* About Me 區塊 */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+.about-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+.about-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.about-description {
+  text-align: center;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+  letter-spacing: 1.5px;
+  margin: 0 auto;
+  max-width: 600px;
+  background: rgba(0,0,0,0.3);
+  padding: 24px 32px;
+  border-radius: 18px;
+}
+
+/* Modal 圖片自適應與提示 */
+#fullscreen-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 96vw;
+  max-height: 96vh;
+}
+#fullscreen-modal img#fullscreen-image {
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+.modal-index-tip {
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 18px;
+  border-radius: 16px;
+  margin: 18px 0 0 0;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+/* 其他細節 */
+@media (max-width: 900px) {
+  .home-avatar { right: 2vw; width: 180px; height: 180px; }
+  .about-avatar { width: 120px; height: 120px; }
+}
+@media (max-width: 600px) {
+  .home-logo { width: 100px; }
+  .home-avatar { width: 100px; height: 100px; }
+  .about-logo { width: 60px; height: 60px; }
+  .about-avatar { width: 80px; height: 80px; }
+  .about-description { font-size: 1rem; padding: 12px 8px; }
+}

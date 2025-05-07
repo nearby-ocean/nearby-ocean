@@ -87,6 +87,62 @@ window.addEventListener("load", () => {
   }
 });
 
+// 區塊切換功能
+function showSection(sectionId) {
+  document.querySelectorAll('.main-section').forEach(sec => sec.classList.remove('active'));
+  const section = document.getElementById(sectionId);
+  if (section) section.classList.add('active');
+}
+
+// 側欄選單點擊事件
+window.addEventListener('DOMContentLoaded', () => {
+  // 預設顯示首頁
+  showSection('home');
+
+  // 側欄選單綁定
+  document.querySelectorAll('#sidebar a').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = href.replace('#', '');
+        if (target === 'portfolio' ||
+            target === '風景' || target === '人像' || target === '街拍' || target === '音樂活動' ||
+            target === '婚禮' || target === '活動紀錄' || target === '商案' || target === '國家地區特輯' || target === 'magazine') {
+          showSection('portfolio');
+          showPortfolioCategory(target);
+        } else {
+          showSection(target);
+        }
+      }
+    });
+  });
+
+  // 作品集分類預設顯示
+  showPortfolioCategory('風景');
+});
+
+// 作品集分類切換
+function showPortfolioCategory(category) {
+  document.querySelectorAll('.portfolio-category').forEach(cat => cat.style.display = 'none');
+  if (category === '人像') {
+    // 預設顯示人像的第一個子分類
+    showPortfolioCategory('sunshine');
+    return;
+  }
+  const cat = document.getElementById(category);
+  if (cat) cat.style.display = 'block';
+  // 人像子分類
+  if (['sunshine','shadowless','multi','dark'].includes(category)) {
+    document.getElementById('人像').style.display = 'block';
+    document.querySelectorAll('#人像 > .portfolio-category').forEach(sub => sub.style.display = 'none');
+    const subcat = document.getElementById(category);
+    if (subcat) subcat.style.display = 'block';
+  } else if (document.getElementById('人像')) {
+    document.getElementById('人像').style.display = 'none';
+  }
+}
+
 // 圖片點擊展示功能
 let currentImageIndex = 0;
 let currentCategory = "";
@@ -100,6 +156,7 @@ function openFullscreenModal(category, index) {
   modal.innerHTML = `
     <div class="modal-content">
       <img id="fullscreen-image" src="${getImageSrc(category, index)}" />
+      <div class="modal-index-tip">第 ${index+1} 張／共 ${getImageArray(category).length} 張</div>
       <button id="prev-button">◀</button>
       <button id="next-button">▶</button>
       <button id="close-button">✖</button>
