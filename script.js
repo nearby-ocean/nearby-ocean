@@ -106,7 +106,10 @@ window.addEventListener('DOMContentLoaded', () => {
       if (href && href.startsWith('#')) {
         e.preventDefault();
         const target = href.replace('#', '');
-        if (target === 'portfolio' ||
+        if (target === 'portfolio') {
+          showSection('portfolio');
+          showPortfolioCategory('風景');
+        } else if (
             target === '風景' || target === '人像' || target === '街拍' || target === '音樂活動' ||
             target === '婚禮' || target === '活動紀錄' || target === '商案' || target === '國家地區特輯' || target === 'magazine' ||
             target === '日本' || target === '史瓦帝尼' ||
@@ -169,7 +172,6 @@ function openFullscreenModal(category, index) {
       <div class="modal-index-tip">第 ${index+1} 張／共 ${images.length} 張</div>
       <button id="prev-button">◀</button>
       <button id="next-button">▶</button>
-      <button id="close-button">✖</button>
     </div>
   `;
   // 點擊遮罩關閉
@@ -179,7 +181,6 @@ function openFullscreenModal(category, index) {
   document.body.appendChild(modal);
   document.getElementById("prev-button").addEventListener("click", e => { e.stopPropagation(); showPrevImage(); });
   document.getElementById("next-button").addEventListener("click", e => { e.stopPropagation(); showNextImage(); });
-  document.getElementById("close-button").addEventListener("click", e => { e.stopPropagation(); modal.remove(); });
 }
 
 function getImageArray(category) {

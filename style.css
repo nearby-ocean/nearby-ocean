@@ -66,6 +66,7 @@ body, html {
   flex-wrap: wrap;
   gap: 10px;
   padding: 1rem;
+  justify-content: center;
 }
 
 .gallery-image {
@@ -121,15 +122,9 @@ body, html {
   z-index: 10;
 }
 
-#prev-button { left: -70px; }
-#next-button { right: -70px; }
-#close-button {
-  top: -60px;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  transform: none;
-}
+#prev-button { left: -40px; }
+#next-button { right: -40px; }
+#close-button { display: none; }
 
 #prev-button:hover, #next-button:hover, #close-button:hover {
   background: #fff;
@@ -196,7 +191,7 @@ body, html {
   z-index: 2;
 }
 .home-logo {
-  width: 216px;
+  width: 324px;
   margin-bottom: 20px;
 }
 .home-title {
@@ -370,4 +365,26 @@ body, html {
   margin-bottom: 16px;
   border-radius: 12px;
   background: rgba(255,255,255,0.03);
+}
+
+/* About Me左右對齊，文字往上移 */
+.about-row-horizontal {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+}
+.about-description-up {
+  align-self: flex-start;
+  margin-top: -40px;
+  margin-bottom: 0;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  padding: 24px 32px;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+  letter-spacing: 1.5px;
+  max-width: 600px;
 }
