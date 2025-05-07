@@ -122,6 +122,22 @@ body, html {
   z-index: 10;
 }
 
+#prev-button, #next-button {
+  width: auto;
+  height: auto;
+  font-size: 2.2rem;
+  padding: 0 10px;
+  border-radius: 0;
+  background: transparent;
+  color: #bbb;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  transition: color 0.2s;
+}
+
 #prev-button { left: -40px; }
 #next-button { right: -40px; }
 #close-button { display: none; }
@@ -322,9 +338,39 @@ body, html {
   .footer-contact { gap: 10px; }
 }
 
-/* About Me LOGO與頭貼左右對齊、放大1.5倍 */
-.about-row { display: flex; justify-content: center; align-items: center; gap: 48px; }
-.about-logo, .about-avatar { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 20px rgba(0,0,0,0.2); }
+/* About Me左右對齊，文字往上移，logo與頭像更靠近 */
+.about-row-horizontal {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.about-logo, .about-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.about-description-up {
+  margin: 32px auto 0 auto;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  padding: 24px 32px;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+  letter-spacing: 1.5px;
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 保證 about 區塊底部有空間不被 footer 遮住 */
+#about.main-section {
+  padding-bottom: 100px;
+}
 
 /* Footer固定底部 */
 #footer {
@@ -365,26 +411,4 @@ body, html {
   margin-bottom: 16px;
   border-radius: 12px;
   background: rgba(255,255,255,0.03);
-}
-
-/* About Me左右對齊，文字往上移 */
-.about-row-horizontal {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 48px;
-}
-.about-description-up {
-  align-self: flex-start;
-  margin-top: -40px;
-  margin-bottom: 0;
-  text-align: center;
-  background: rgba(0,0,0,0.3);
-  padding: 24px 32px;
-  border-radius: 18px;
-  color: #fff;
-  font-size: 1.3rem;
-  line-height: 2.2rem;
-  letter-spacing: 1.5px;
-  max-width: 600px;
 }
