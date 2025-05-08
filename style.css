@@ -34,6 +34,10 @@ body, html {
   padding: 1rem;
   border-radius: 1rem;
   z-index: 100;
+  max-height: 70vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
 #sidebar ul {
@@ -259,19 +263,38 @@ body, html {
 }
 
 /* About Me 區塊 */
-.about-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
+#about {
+  padding: 2rem;
+  margin-top: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: -100px;
 }
+
+#about h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+#about p {
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
 .about-logo {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   margin-bottom: 30px;
 }
+
 .about-avatar {
   width: 180px;
   height: 180px;
@@ -280,6 +303,7 @@ body, html {
   margin-bottom: 30px;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
+
 .about-description {
   text-align: center;
   color: #fff;
@@ -411,4 +435,17 @@ body, html {
   margin-bottom: 16px;
   border-radius: 12px;
   background: rgba(255,255,255,0.03);
+}
+
+#sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
 }
