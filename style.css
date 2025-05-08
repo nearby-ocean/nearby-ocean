@@ -57,7 +57,8 @@ body, html {
 
 /* 禁用點擊的選單項目 */
 #sidebar a[href="#portfolio"],
-#sidebar a[href="#人像"] {
+#sidebar a[href="#人像"],
+#sidebar a[href="#國家地區特輯"] {
   pointer-events: none;
   opacity: 0.7;
 }
@@ -385,7 +386,13 @@ body, html {
 /* 其他細節 */
 @media (max-width: 900px) {
   .home-logo {
-    width: 972px; /* 放大3倍 */
+    width: 324px; /* 縮小3倍 */
+  }
+  
+  .home-content {
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
   }
   
   .home-avatar {
@@ -396,11 +403,12 @@ body, html {
   }
   
   .home-title {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
+    margin: 10px 0;
   }
   
   .home-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   #sidebar {
@@ -411,20 +419,23 @@ body, html {
   }
   
   .about-container {
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
+    justify-content: center;
   }
   
   .about-logo,
   .about-avatar {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
   }
   
   .about-description-up {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 16px 24px;
     max-width: 90%;
+    line-height: 1.6;
   }
   
   .footer-contact {
@@ -432,24 +443,32 @@ body, html {
     gap: 20px;
     padding: 0 10px;
   }
+  
+  .footer-copyright {
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 600px) {
   .home-logo {
-    width: 648px;
+    width: 216px;
+  }
+  
+  .home-content {
+    padding: 15px;
   }
   
   .home-avatar {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
   
   .home-title {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   
   .home-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   
   #sidebar {
@@ -461,18 +480,23 @@ body, html {
   
   .about-logo,
   .about-avatar {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
   
   .about-description-up {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding: 12px 16px;
+    line-height: 1.4;
   }
   
   .footer-contact {
     font-size: 0.7rem;
     gap: 10px;
+  }
+  
+  .footer-copyright {
+    font-size: 0.6rem;
   }
 }
 
@@ -571,4 +595,20 @@ body, html {
 
 .gallery-image::after {
   display: none;
+}
+
+/* 確保圖片在手機上可以點擊切換 */
+@media (max-width: 900px) {
+  .gallery-image {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  #fullscreen-modal {
+    cursor: pointer;
+  }
+  
+  .modal-content {
+    cursor: pointer;
+  }
 }
