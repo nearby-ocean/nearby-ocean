@@ -275,25 +275,26 @@ body, html {
   top: -100px;
 }
 
-.about-header {
+.about-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem;
   margin-bottom: 2rem;
-  padding: 0 2rem;
 }
 
 .about-logo {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
 .about-avatar {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
@@ -325,6 +326,21 @@ body, html {
   background: rgba(0,0,0,0.3);
   padding: 24px 32px;
   border-radius: 18px;
+}
+
+.about-description-up {
+  margin: 32px auto 0 auto;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  padding: 24px 32px;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+  letter-spacing: 1.5px;
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Modal 圖片自適應與提示 */
