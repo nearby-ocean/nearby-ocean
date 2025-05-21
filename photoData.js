@@ -683,5 +683,3 @@ const photoData = {
     "profolio/風景/landscape (9).jpg"
   ]
 };
-
-export default photoData;
