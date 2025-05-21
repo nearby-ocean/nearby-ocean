@@ -1,4 +1,4 @@
-const photoData = {
+window.photoData = {
   "人像": {
     "dark": [
       "profolio/人像/dark/dark (1).jpg",
