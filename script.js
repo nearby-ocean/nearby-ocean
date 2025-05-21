@@ -168,19 +168,52 @@ function openFullscreenModal(category, index) {
   modal.id = "fullscreen-modal";
   modal.innerHTML = `
     <div class="modal-content" onclick="event.stopPropagation()">
-      <img id="fullscreen-image" src="${images[index]}" />
+      <div class="modal-loading">載入中...</div>
+      <img id="fullscreen-image" src="${images[index]}" onload="this.parentElement.querySelector('.modal-loading').style.display='none'" onerror="this.parentElement.querySelector('.modal-loading').textContent='圖片載入失敗'"/>
       <div class="modal-index-tip">第 ${index+1} 張／共 ${images.length} 張</div>
       <button id="prev-button">◀</button>
       <button id="next-button">▶</button>
+      <button id="close-button">×</button>
     </div>
   `;
+  
   // 點擊遮罩關閉
   modal.addEventListener('click', e => {
-    if (e.target === modal) modal.remove();
+    if (e.target === modal) closeModal();
   });
+  
+  // 關閉按鈕
+  const closeButton = modal.querySelector('#close-button');
+  closeButton.addEventListener('click', closeModal);
+  
+  // 上一張/下一張按鈕
+  modal.querySelector("#prev-button").addEventListener("click", e => { e.stopPropagation(); showPrevImage(); });
+  modal.querySelector("#next-button").addEventListener("click", e => { e.stopPropagation(); showNextImage(); });
+  
+  // 鍵盤控制
+  const handleKeyDown = e => {
+    switch(e.key) {
+      case 'ArrowLeft': showPrevImage(); break;
+      case 'ArrowRight': showNextImage(); break;
+      case 'Escape': closeModal(); break;
+    }
+  };
+  document.addEventListener('keydown', handleKeyDown);
+  
+  // 滑鼠滾輪控制
+  modal.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (e.deltaY > 0) showNextImage();
+    else showPrevImage();
+  });
+  
   document.body.appendChild(modal);
-  document.getElementById("prev-button").addEventListener("click", e => { e.stopPropagation(); showPrevImage(); });
-  document.getElementById("next-button").addEventListener("click", e => { e.stopPropagation(); showNextImage(); });
+  
+  // 關閉模態框時清理事件監聽器
+  function closeModal() {
+    document.removeEventListener('keydown', handleKeyDown);
+    modal.remove();
+  }
 }
 
 function getImageArray(category) {
@@ -197,7 +230,13 @@ function getImageArray(category) {
 function updateModalImage() {
   const images = getImageArray(currentCategory);
   const modalImg = document.getElementById("fullscreen-image");
-  if (modalImg) modalImg.src = images[currentImageIndex];
+  const loading = modalImg.parentElement.querySelector('.modal-loading');
+  if (loading) loading.style.display = 'block';
+  if (modalImg) {
+    modalImg.src = images[currentImageIndex];
+    modalImg.onload = () => loading.style.display = 'none';
+    modalImg.onerror = () => loading.textContent = '圖片載入失敗';
+  }
   const tip = document.querySelector('.modal-index-tip');
   if (tip) tip.textContent = `第 ${currentImageIndex+1} 張／共 ${images.length} 張`;
 }
