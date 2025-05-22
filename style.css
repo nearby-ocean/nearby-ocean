@@ -344,18 +344,44 @@ body, html {
 }
 
 .about-description-up {
-  margin: 32px auto 0 auto;
-  text-align: center;
-  background: rgba(0,0,0,0.3);
-  padding: 24px 32px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 18px;
   color: #fff;
-  font-size: 1.3rem;
-  line-height: 2.2rem;
-  letter-spacing: 1.5px;
-  max-width: 600px;
   position: relative;
   z-index: 2;
+}
+
+.about-text-zh,
+.about-text-en {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.about-text-en {
+  margin-bottom: 0;
+}
+
+.about-description-up h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.about-description-up p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
 }
 
 /* Modal 圖片自適應與提示 */
@@ -436,11 +462,23 @@ body, html {
   }
   
   .about-description-up {
-    font-size: 0.8rem;
-    padding: 12px 20px;
-    max-width: 85%;
-    line-height: 1.4;
-    margin-top: 20px;
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+  
+  .about-text-zh,
+  .about-text-en {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .about-description-up h2 {
+    font-size: 1.8rem;
+  }
+  
+  .about-description-up p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
   
   .footer-contact {
@@ -497,11 +535,23 @@ body, html {
   }
   
   .about-description-up {
-    font-size: 0.7rem;
-    padding: 10px 15px;
-    max-width: 90%;
-    line-height: 1.3;
-    margin-top: 15px;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .about-text-zh,
+  .about-text-en {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-description-up h2 {
+    font-size: 1.5rem;
+  }
+  
+  .about-description-up p {
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
   
   .footer-contact {
