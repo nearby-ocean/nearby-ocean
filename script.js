@@ -270,3 +270,79 @@ function handleSwipeGesture() {
   if (touchEndX < touchStartX - 50) showNextImage();
   if (touchEndX > touchStartX + 50) showPrevImage();
 }
+
+// 圖片延遲載入
+function lazyLoadImages() {
+  const images = document.querySelectorAll('.photo-item img:not(.loaded)');
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.onload = () => {
+          img.classList.add('loaded');
+          observer.unobserve(img);
+        };
+      }
+    });
+  }, {
+    rootMargin: '50px 0px',
+    threshold: 0.01
+  });
+
+  images.forEach(img => imageObserver.observe(img));
+}
+
+// 優化動畫效能
+function optimizeAnimations() {
+  const photoItems = document.querySelectorAll('.photo-item');
+  const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  photoItems.forEach(item => animationObserver.observe(item));
+}
+
+// 錯誤處理
+function handleImageError(img) {
+  img.onerror = function() {
+    this.src = 'images/error.jpg';
+    this.alt = '圖片載入失敗';
+  };
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+  lazyLoadImages();
+  optimizeAnimations();
+  
+  // 為所有圖片添加錯誤處理
+  document.querySelectorAll('img').forEach(handleImageError);
+});
+
+// 防止圖片被拖曳
+document.addEventListener('dragstart', (e) => {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+});
+
+// 防止右鍵選單
+document.addEventListener('contextmenu', (e) => {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+});
+
+// 防止複製
+document.addEventListener('copy', (e) => {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+});

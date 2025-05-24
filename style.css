@@ -676,3 +676,75 @@ body, html {
     cursor: pointer;
   }
 }
+
+/* 圖片保護和效能優化 */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* 優化圖片載入 */
+.photo-item img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.photo-item img.loaded {
+  opacity: 1;
+}
+
+/* 優化版權聲明 */
+.copyright {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* 優化手機版側欄 */
+@media (max-width: 768px) {
+  .sidebar {
+    z-index: 1000;
+  }
+  
+  .about-avatar {
+    z-index: 999;
+  }
+}
+
+/* 優化載入效能 */
+.photo-item {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* 優化動畫效能 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.photo-item {
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-play-state: paused;
+}
+
+.photo-item.visible {
+  animation-play-state: running;
+}
